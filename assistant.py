@@ -9,19 +9,23 @@ from openai import OpenAI
 from datetime import datetime
 
 # Initialize voice engine
-engine = pyttsx3.init()
-engine.setProperty("rate", 170)
-engine.setProperty("volume", 1.0)
+try:
+    engine = pyttsx3.init()
+    engine.setProperty("rate", 170)
+    engine.setProperty("volume", 1.0)
 
-voices = engine.getProperty("voices")
-engine.setProperty("voice", voices[0].id)
+    voices = engine.getProperty("voices")
+    engine.setProperty("voice", voices[0].id)
 
+except Exception:
+    engine = None
 
 def speak(text):
     print("Assistant:", text)
-    engine.say(text)
-    engine.runAndWait()
 
+    if engine:
+        engine.say(text)
+        engine.runAndWait()
 
 def take_command():
     recognizer = sr.Recognizer()
