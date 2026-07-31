@@ -2,7 +2,6 @@ import pyttsx3
 import speech_recognition as sr
 import os
 import webbrowser
-import pyautogui
 import pyjokes
 import requests
 import urllib.parse
@@ -162,11 +161,7 @@ def main():
             speak("Opening Visual Studio Code")
             os.system("code")
 
-        elif "take screenshot" in command:
-            screenshot = pyautogui.screenshot()
-            filename = "Screenshot_" + datetime.now().strftime("%Y%m%d_%H%M%S") + ".png"
-            screenshot.save(filename)
-            speak("Screenshot saved successfully.")
+       
 
         elif "what time is it" in command or "tell me the time" in command:
             current_time = datetime.now().strftime("%I:%M %p")
