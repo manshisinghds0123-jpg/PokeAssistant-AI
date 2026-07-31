@@ -6,9 +6,6 @@ import pyjokes
 import requests
 import urllib.parse
 from openai import OpenAI
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 from datetime import datetime
 
 # Initialize voice engine
@@ -77,19 +74,7 @@ def weather():
 
     except:
         speak("Unable to get weather.")
-def set_volume(level):
 
-    devices = AudioUtilities.GetSpeakers()
-
-    interface = devices.Activate(
-        IAudioEndpointVolume._iid_,
-        CLSCTX_ALL,
-        None
-    )
-
-    volume = cast(interface, POINTER(IAudioEndpointVolume))
-
-    volume.SetMasterVolumeLevelScalar(level, None)
 
 
 
@@ -224,17 +209,7 @@ def main():
 
         elif "weather" in command:
             weather()
-        elif "mute" in command:
-            set_volume(0)
-            speak("Muted")
-
-        elif "volume up" in command:
-            set_volume(1)
-            speak("Volume increased")
-
-        elif "volume down" in command:
-            set_volume(0.3)
-            speak("Volume decreased")
+       
 
         # -------------------------
         # Lock Computer
