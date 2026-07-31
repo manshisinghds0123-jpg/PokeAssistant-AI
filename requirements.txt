@@ -1,0 +1,11 @@
+flask
+flask-cors
+pyttsx3
+SpeechRecognition
+PyAudio
+pyautogui
+pyjokes
+requests
+openai
+pycaw
+comtypes
